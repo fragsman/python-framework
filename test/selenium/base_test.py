@@ -3,9 +3,6 @@ from selenium.webdriver.edge.options import Options
 
 class BaseTest:
     driver = None #This is similar to a null in Java
-
-    def __init__(self):
-        pass
         
     def setup(self):
         print("setup")
@@ -20,4 +17,4 @@ class BaseTest:
             BaseTest.driver = None
 
     def navigate(self):
-        self.driver.get("https://www.python.org")
+        self.driver.get("https://askomdch.com")
