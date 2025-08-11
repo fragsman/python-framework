@@ -13,6 +13,7 @@ def driver():
     #Disable Edge Logs Warnings/Errors which makes output harder to read. If things breaks, comment the following line.
     myOptions.add_experimental_option('excludeSwitches', ['enable-logging']) 
     driver = webdriver.Edge(options=myOptions)
+    driver.get("https://askomdch.com")
     yield driver
     #This is is the tear-down
     driver.quit()
