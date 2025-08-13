@@ -1,7 +1,6 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.webdriver import WebDriver
-
 class BasePage():
-    locator = "locator"
 
-    #common methods for all pages
+    def __init__(self, driver):
+        self.driver = driver
+
+    #common methods for all pages below this line
