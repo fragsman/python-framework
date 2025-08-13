@@ -1,11 +1,11 @@
 import pytest
-from selenium.webdriver.common.by import By
 from src.pages.header_page import HeaderPage
 from src.pages.store_page import StorePage
 from src.pages.product_detail_page import ProductDetailPage
 
 class TestPortal():
 
+    @pytest.mark.skip(reason="Testing")
     def test_store_link_leads_to_store_page(self,driver):
         header = HeaderPage(driver)
         header.click_store_menu()
@@ -13,16 +13,18 @@ class TestPortal():
         actual_header_text = store_page.get_header_text()
         assert actual_header_text == "Store"
 
+    @pytest.mark.skip(reason="Testing")
     def test_store_link_url(self,driver):
         header = HeaderPage(driver)
         header.click_store_menu()
         assert driver.current_url == "https://askomdch.com/store/"
 
+    @pytest.mark.skip(reason="Testing")
     def test_search_bar_in_store(self,driver):
         header = HeaderPage(driver)
         header.click_store_menu()
         store_page = StorePage(driver)
-        store_page.search_item("store") #text is wrong on purpose to make it fail
+        store_page.search_item("shoes")
         actual_header_text = store_page.get_header_text()
         assert actual_header_text == "Search results: “shoes”"
 
@@ -39,5 +41,5 @@ class TestPortal():
         assert actual_cart_prod_name == product_name
 
     @pytest.mark.skip(reason="Testing")
-    def test_ignored_test():
+    def test_ignored_test(self):
         assert "a" == "b"

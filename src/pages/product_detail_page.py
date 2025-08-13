@@ -1,14 +1,13 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.webdriver import WebDriver
 from src.pages.base_page import BasePage
+from src.utils.interactor import Interactor
 
 class ProductDetailPage(BasePage):
 
-    loc_add_to_cart = "//button[contains(text(),'Add to cart')]"
+    ADD_TO_CART = (By.XPATH,"//button[contains(text(),'Add to cart')]")
 
-    def __init__(self, driver: WebDriver):
-        self.driver = driver
+    def __init__(self, driver):
+        super().__init__(driver)
 
     def add_product_to_cart(self):
-        add_to_cart = self.driver.find_element(By.XPATH,ProductDetailPage.loc_add_to_cart)
-        add_to_cart.click()
+        Interactor.find_element(self.driver,self.ADD_TO_CART).click()
