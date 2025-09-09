@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from src.pages.base_page import BasePage
 from src.utils.interactor import Interactor
-import time
 
 class HeaderPage(BasePage):
     HOME_LINK = (By.XPATH,"//li[@id='menu-item-1226']")
@@ -23,5 +22,9 @@ class HeaderPage(BasePage):
         Interactor.hover_to_element(self.driver,self.CART_ICON)
         Interactor.wait_for_element_to_be_visible(self.driver,self.CART_WIDGET_CONTENT)
 
+    def enter_to_cart(self):
+        Interactor.find_element(self.driver,self.CART_ICON).click()
+
     def get_first_item_name_in_cart(self) -> str:
         return Interactor.find_element(self.driver,self.CART_WIDGET_PROD_NAME).text
+    
