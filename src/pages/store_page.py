@@ -7,16 +7,21 @@ class StorePage(BasePage):
     SEARCH_BAR = (By.ID,"woocommerce-product-search-field-0")
     PRODUCT_NAME = ""
     PRODUCT_IMAGE = (By.XPATH,f"//h2[contains(text(),'{PRODUCT_NAME}')]/parent::a")
+    PRODUCTS = (By.CSS_SELECTOR,".products img")
 
     def __init__(self, driver):
         super().__init__(driver)
 
     def get_header_text(self) -> str:
         return Interactor.find_element(self.driver,self.HEADER_TEXT).text
-    
-    def search_item(self,text: str):
-        Interactor.send_keys(self.driver,self.SEARCH_BAR,text)
+
+    def click_on_first_available_product(self):
+        product_links = Interactor.find_elements(self.driver, self.PRODUCTS)
+        product_links[0].click()
 
     def click_product_image(self, product_name: str):
         self.PRODUCT_NAME = product_name
         Interactor.find_element(self.driver,self.PRODUCT_IMAGE).click()
+
+    def search_item(self,text: str):
+        Interactor.send_keys(self.driver,self.SEARCH_BAR,text)
